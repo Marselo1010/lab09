@@ -27,7 +27,9 @@ public final class SimpleGUIWithFileChooser {
             canvas2.setLayout(new BorderLayout());
             final JButton button2 = new JButton("Browse...");
             canvas2.add(button2,BorderLayout.NORTH);
-            frame.setContentPane(canvas2);
+            neg.getCanvas().add(canvas2, BorderLayout.NORTH);
+            frame.setContentPane(neg.getCanvas());
+            
     }
 
     void display(){
@@ -41,7 +43,9 @@ public final class SimpleGUIWithFileChooser {
     }
 
     public static void main(final String... args) {
-        new SimpleGUI().display();
+        new SimpleGUIWithFileChooser().display();
+        
+
     }
 
     

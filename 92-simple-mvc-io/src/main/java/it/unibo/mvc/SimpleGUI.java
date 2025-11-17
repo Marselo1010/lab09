@@ -9,6 +9,12 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JTextArea;
 
+import javax.swing.BoxLayout;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
 /**
  * A very simple program using a graphical interface.
  * 
@@ -32,9 +38,10 @@ public final class SimpleGUI {
     private final static String TITLE = "My first Java graphical interface";
     private static final int PROPORTION = 5;
     private final JFrame frame = new JFrame(TITLE);
+    private final JPanel canvas;
 
     SimpleGUI(){
-        final JPanel canvas = new JPanel();
+        this.canvas = new JPanel();
         final JTextArea text = new JTextArea();
         canvas.setLayout(new BorderLayout());
         final JButton button = new JButton("Save");
@@ -43,7 +50,20 @@ public final class SimpleGUI {
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                System.out.println("da finire"); // NOPMD suppressed as it is a false positive
+                Controller controller = new Controller();
+                controller.setCurrentFile(null);
+            }
+        });
 
+
+    }
+
+    public JPanel getCanvas(){
+        return this.canvas;
     }
 
     void display(){
