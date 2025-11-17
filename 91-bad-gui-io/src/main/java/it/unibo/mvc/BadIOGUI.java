@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -39,6 +41,7 @@ public class BadIOGUI {
     /**
      * Creates a new BadIOGUI.
      */
+
     public BadIOGUI() {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
@@ -46,6 +49,36 @@ public class BadIOGUI {
         canvas.add(write, BorderLayout.CENTER);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //ex 01.01
+
+        final JPanel myPanel = new JPanel();
+        myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.X_AXIS));
+        myPanel.add(write);
+        canvas.add(myPanel, BorderLayout.CENTER);
+
+        //ex 01.02
+
+        final JButton read = new JButton("Read file");
+        myPanel.add(read);
+
+        //ex 01.03
+
+        read.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                System.out.println(" clicked me "); //NOPMD
+                List<String> lista = new LinkedList<>();
+                try {
+                    lista = Files.readAllLines(Path.of(PATH));
+                } catch (final IOException exc) {
+                    System.err.println(exc); //NOPMD
+                }
+                System.out.println(lista); //NOPMD 
+            }
+        });
+
         /*
          * Handlers
          */
@@ -87,6 +120,8 @@ public class BadIOGUI {
          * flag makes the OS window manager take care of the default positioning
          * on screen. Results may vary, but it is generally the best choice.
          */
+        frame.pack();
+
         frame.setLocationByPlatform(true);
         /*
          * OK, ready to push the frame onscreen
