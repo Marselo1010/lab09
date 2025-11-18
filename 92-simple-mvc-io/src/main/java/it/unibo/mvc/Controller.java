@@ -32,7 +32,7 @@ public class Controller {
     /**
      * Sets the file currently associated with this controller.
      * 
-     * @param newFile
+     * @param newFile file that will be set
      * 
      */
     void setCurrentFile(final File newFile) {
@@ -63,7 +63,7 @@ public class Controller {
     /**
      * Writes the given string to the file associated with this controller using UTF-8 encoding.
      * 
-     * @param s
+     * @param s string that will be saved in the file
      * 
      */
     void write(final String s) {
@@ -72,12 +72,5 @@ public class Controller {
         } catch (final IOException e) {
             System.err.println(e); //NOPMD
         }
-    }
-
-    public static void main(final String... args) {
-       final Controller controller = new Controller();
-       System.out.println(controller.getCurrentFile());
-       System.out.println(controller.getCurrentFilePath());
-       controller.write("ciao son gm ");
     }
 }
