@@ -49,7 +49,7 @@ public final class SimpleGUI {
     /**
      * @return canvas
      */
-    public JPanel getCanvas() {
+    JPanel getCanvas() {
         return this.canvas;
     }
 
