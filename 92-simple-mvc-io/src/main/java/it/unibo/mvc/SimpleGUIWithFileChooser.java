@@ -40,6 +40,7 @@ public final class SimpleGUIWithFileChooser {
             topPanel.add(browseButton, BorderLayout.LINE_END);
             gui.getCanvas().add(topPanel, BorderLayout.NORTH);
             frame.setContentPane(gui.getCanvas());
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             browseButton.addActionListener(new ActionListener() {
             @Override
