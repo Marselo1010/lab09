@@ -35,7 +35,7 @@ public class Controller {
      * @param newFile file that will be set
      * 
      */
-    void setCurrentFile(final File newFile) {
+    public void setCurrentFile(final File newFile) {
         this.file = newFile;
     }
 
@@ -45,7 +45,7 @@ public class Controller {
      * @return file
      * 
      */
-    File getCurrentFile() {
+    public File getCurrentFile() {
         return this.file;
     }
 
@@ -55,7 +55,7 @@ public class Controller {
      * @return the absolute path
      * 
      */
-    String getCurrentFilePath() {
+    public String getCurrentFilePath() {
         return this.file.getAbsolutePath();
 
     }
@@ -66,7 +66,7 @@ public class Controller {
      * @param s string that will be saved in the file
      * 
      */
-    void write(final String s) {
+    public void write(final String s) throws IOException {
         try (PrintStream ps = new PrintStream(file.getAbsolutePath(), StandardCharsets.UTF_8)) {
             ps.print(s);
         } catch (final IOException e) {

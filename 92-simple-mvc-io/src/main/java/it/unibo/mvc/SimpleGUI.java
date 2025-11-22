@@ -10,6 +10,7 @@ import javax.swing.JTextArea;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * A very simple program using a graphical interface.
@@ -40,7 +41,11 @@ public final class SimpleGUI {
             public void actionPerformed(final ActionEvent e) {
                 System.out.println("message saved in the file --> " //NOPMD
                 + SimpleGUI.this.controller.getCurrentFile());
-                SimpleGUI.this.controller.write(text.getText());
+                try {
+                    SimpleGUI.this.controller.write(text.getText());
+                } catch (final IOException error) {
+                    error.printStackTrace(); //NOPMD
+                }
             }
         });
 
